@@ -13,7 +13,7 @@ import {
     transact,
     Web3MobileWallet,
   } from '@solana-mobile/mobile-wallet-adapter-protocol-web3js';
-  import {LAMPORTS_PER_SOL, Transaction} from '@solana/web3.js';
+  import {LAMPORTS_PER_SOL, Transaction, TransactionInstruction} from '@solana/web3.js';
   import {useState} from 'react';
 import React from 'react';
   
@@ -49,8 +49,16 @@ import React from 'react';
           Alert.alert(message);
         }
     }
-  
+
     const incrementCounter = () => {
+        incrementDecrementCounter(true);
+    }
+
+    const decrementCounter = () => {
+        incrementDecrementCounter(false);
+    }
+
+    const incrementDecrementCounter = (shouldIncrement: boolean) => {
 
         if (!program || !counterAddress) return;
 
@@ -61,10 +69,18 @@ import React from 'react';
                 const authResult = await authorizeSession(wallet);
                 const latestBlockhashResult = await connection.getLatestBlockhash();
 
-                const ix = await program.methods
-                .increment()
-                .accounts({counter: counterAddress, user: authResult.publicKey})
-                .instruction();
+                let ix: TransactionInstruction;
+                if(shouldIncrement){
+                    ix = await program.methods
+                    .increment()
+                    .accounts({counter: counterAddress, user: authResult.publicKey})
+                    .instruction();
+                } else {    
+                    ix = await program.methods
+                    .decrement()
+                    .accounts({counter: counterAddress, user: authResult.publicKey})
+                    .instruction();
+                }
 
                 const balance = await connection.getBalance(authResult.publicKey);
                 console.log(`Wallet ${authResult.publicKey} has a balance of ${balance}`);
@@ -103,6 +119,13 @@ import React from 'react';
           onPress={incrementCounter}>
           <Text style={floatingActionButtonStyle.text}>
             +
+          </Text>
+        </Pressable>
+        <Pressable
+          style={floatingActionButtonStyle.container}
+          onPress={decrementCounter}>
+          <Text style={floatingActionButtonStyle.text}>
+            -
           </Text>
         </Pressable>
       </>
