@@ -746,9 +746,11 @@ export function MainScreen() {
 }
 ```
 
-### 9. CounterView.tsx
+#### 9. Create CounterView.tsx
 
-The `CounterView` is the first of our two program-specific files. Its only job is to fetch and listen for updates on our `Counter` account. Since we’re only listening here, we don’t have to do anything MWA related. It should look identical to a web application. 
+The `CounterView` is the first of our two program-specific files. `CounterView`'s only job is to fetch and listen for updates on our `Counter` account. Since we’re only listening here, we don’t have to do anything MWA-related. It should look identical to a web application. We'll use our `Connection` object to listen for the `programAddress` specified in `ProgramProvider.tsx`. When the account is changed, we update the UI.
+
+In `components/CounterView.tsx` paste the following:
 
 ```tsx
 import {View, Text, StyleSheet} from 'react-native';
