@@ -23,9 +23,10 @@ Solana has gone mobile! For a long time, dApps were web-first rather than mobile
 
 Most relevant to your development journey is the Mobile Wallet Adapter (MWA). The simplest way to get started is to use the Mobile Wallet Adapter with React Native to create a simple Android app. This lesson assumes you're familiar with React and Solana programming. If that's not the case, [start our course from the beginning](https://github.com/solana-foundation/developer-content/blob/main/content/courses/intro-to-solana/intro-to-cryptography.md) and come back here when you feel ready!
 
-## Intro To Solana Mobile
+### Intro To Solana Mobile
 
-Between the Solana Mobile Stack and the Saga mobile device, Solana Mobile has a lot of connotations. For the purposes of this course, we'll be focused on mobile application development where the apps interact with the Solana network. This opens up a whole new paradigm of Crypto use cases and behaviors.
+In these units, we'll develop mobile apps that interact with the Solana network.
+This opens up a whole new paradigm of blockchain use cases and behaviors.
 
 ### Solana Mobile Use Cases
 
