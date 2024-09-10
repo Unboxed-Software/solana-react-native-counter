@@ -51,9 +51,10 @@ we can be part of it:
 
 Solana wallet interaction differs slightly on mobile compared to web. The core wallet functionality is the same: the wallet holds your private keys and uses them to sign and send transactions. To avoid having different interfaces between wallets, developers abstracted that functionality into the Solana Wallet Adapter standard. This remains the standard on web. The mobile counterpart is the Mobile Wallet Adapter (MWA).
 
-The differences between the two standards are due to the different construction of web vs mobile wallets. Web wallets are just browser extensions that inject wallet adapter functions into the `window` object of your webpage. This gives your site access to them. Mobile wallets, however, are native applications. There's no way to surface functions from one native application to another. The Mobile Wallet Adapter exists as a workaround to enable any app, written in any language, to connect to a native wallet app.
+The differences between the two standards are due to the different construction of web vs mobile wallets. Web wallets are just browser extensions that inject wallet adapter functions into the `window` object of your webpage. This gives your site access to them. Mobile wallets, however, are native applications on a
+mobile operating system. There's no way to surface functions from one native application to another. The Mobile Wallet Adapter exists as a workaround to enable any app, written in any language, to connect to a native wallet app.
 
-We'll dig into the specifics of the Mobile Wallet Adapter in a later lesson, but it effectively opens a WebSocket between applications to facilitate communication. That way a separate app can provide the wallet app with the transaction to be signed and sent, and the wallet app can respond with appropriate status updates.
+We'll dig into the specifics of the Mobile Wallet Adapter in a [later lesson](https://github.com/solana-foundation/developer-content/blob/main/content/courses/mobile/mwa-deep-dive.md), but it effectively opens a WebSocket between applications to facilitate communication. That way a separate app can provide the wallet app with the transaction to be signed and sent, and the wallet app can respond with appropriate status updates.
 
 ### Supported Operating Systems
 
