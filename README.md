@@ -105,7 +105,8 @@ There is a learning curve, but if you know React you're not nearly as far from b
 Solana React Native dApps are virtually identical to React dApps. The primary difference is in the wallet interaction. Instead of the wallet being available in the browser, your dApp will create an MWA session with the wallet app of your choosing using a websocket. Fortunately, this is abstracted for you in the MWA
 library. The only difference you'll need to know is anytime you need to make a call to the wallet you'll be using the `transact` function, which we'll talk about soon.
 
-![dApp Flow](assets/basic-solana-mobile-flow.png)
+![dApp Flow](https://raw.githubusercontent.com/solana-foundation/developer-content/main/public/assets/courses/unboxed/basic-solana-mobile-flow.png)
+
 
 #### Reading data
 
@@ -123,7 +124,7 @@ Writing data to the blockchain has to happen through a transaction. Transactions
 
 Typical wallet interaction happens by calling out to a browser extension. On mobile, you use a WebSocket to start an MWA session. Specifically, you use Android intents where the dApp broadcasts its intent with the `solana-wallet://` scheme. 
 
-![Connecting](../assets/basic-solana-mobile-connect.png)
+![Connecting](https://raw.githubusercontent.com/solana-foundation/developer-content/main/public/assets/courses/unboxed/basic-solana-mobile-connect.png)
 
 When the wallet app receives this intent, it opens a connection with the dApp that initiated the session. Your dApp sends this intent using the `transact` function:
 
@@ -143,7 +144,7 @@ Sending a transaction happens inside the `transact` callback. The flow is as fol
 2. Inside the callback, request authorization with the `wallet.authorize` or `wallet.reauthorize` method depending on the state of the wallet.
 3. Sign the transaction with `wallet.signTransactions` or sign and send with `wallet.signAndSendTransactions`. 
 
-![Transacting](../assets/basic-solana-mobile-transact.png)
+![Transacting](https://raw.githubusercontent.com/solana-foundation/developer-content/main/public/assets/courses/unboxed/basic-solana-mobile-transact.png)
 
 <Callout type="note">You may want to create a `useAuthorization()` hook to manage the wallet's authorization state. We'll practice this in the [Lab](#lab).</Callout>
 
@@ -244,7 +245,7 @@ React Native allows us to write mobile applications using similar patterns as Re
     2. In Android Studio, `Open project > Navigate to the cloned directory > Select mobile-wallet-adapter/android`
     3. After Android Studio finishes loading the project, select `fakewallet` in the build/run configuration dropdown in the top right
         
-        ![Fake Wallet](../assets/basic-solana-mobile-fake-wallet.png)
+        ![Fake Wallet](https://raw.githubusercontent.com/solana-foundation/developer-content/main/public/assets/courses/unboxed/basic-solana-mobile-fake-wallet.png)
         
     4. For debugging, you’ll want to use `Logcat`. Now that your fake wallet is running on the emulator, go to `View -> Tool Windows -> Logcat`. This will open up a console logging out what’s happening with fake wallet.
  3. (Optional) Install other [Solana wallets](https://solana.com/ecosystem/explore?categories=wallet) on the Google Play store.
@@ -953,7 +954,7 @@ npm run android
 
 This will open the app in your emulator, click the + button in the bottom right. This will open up the "fake wallet". The "fake wallet" has various options to assist in debugging. The image below outlines the buttons to tap to properly test your app:
 
-![Counter App](../assets/basic-solana-mobile-counter-app.png)
+![Counter App](https://raw.githubusercontent.com/solana-foundation/developer-content/main/public/assets/courses/unboxed/basic-solana-mobile-counter-app.png)
 
 If you run into some problems, here are some examples of what they could be and how to fix them:
 
