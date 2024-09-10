@@ -698,11 +698,13 @@ export default function App() {
 }
 ```
 
-### 8. MainScreen.tsx
+#### 8. Create MainScreen.tsx
 
 Now, let’s put everything together to create our UI. Create a new folder `screens` and a new file `MainScreen.tsx` inside it. In this file, we are only structuring the screen to display two yet-to-be created components: `CounterView` and `CounterButton`.
 
-Additionally, in this file we're introducing React Native's `StyleSheet`. This is another difference from regular react, but behaves very similarly to CSS. 
+Additionally, in this file we're introducing React Native's `StyleSheet`. This is another difference from regular React.  Don't worry, it behaves very similarly to CSS. 
+
+In `screens/MainScreen.tsx` paste the following:
 
 ```tsx
 import {StatusBar, StyleSheet, View} from 'react-native';
