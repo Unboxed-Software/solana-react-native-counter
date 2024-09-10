@@ -811,14 +811,20 @@ export function CounterView() {
 }
 ```
 
-### 10. CounterButton.tsx
+#### 10. Create CounterButton.tsx
 
-Finally, we have our last component, the `CounterButton`. This button will do the following:
+Finally, we have our last component, the `CounterButton`. This floating action button will do the following in a new function `incrementCounter`:
 
 - Call `transact` to get access to a mobile wallet
-- Authorize the session with `authorizeSession`
+- Authorize the session with `authorizeSession` from the `useAuthorization` hook
+- Request a Devnet airdrop to fund the transaction if not enough Devnet SOL is available
 - Create an `increment` transaction
-- Have the wallet `signAndSendTransactions`
+- Call `signAndSendTransactions` to have the wallet sign and send the transaction
+
+<Callout type="note">The fake Solana wallet we use generates a new keypair every
+time you restart the fake wallet app, requiring that we want to check for funds
+and airdrop every time. This is for demo purposes only, you can't do this in
+production.</Callout>
 
 Create the file `CounterButton.tsx` and fill in the following:
 
