@@ -4,8 +4,10 @@ objectives:
 
 - Explain the benefits of creating mobile-first dApp experiences
 - Explain the high level Mobile Wallet Adapter (MWA) flow
-- Explain the high level differences between React and React native
+- Explain the high level differences between React and React Native
 - Create a simple Android Solana dApp using React Native
+description:
+  "Learn how to build native mobile apps using blockchain functionality"
 ---
 
 # TL;DR
