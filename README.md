@@ -654,19 +654,20 @@ export function ProgramProvider(props: ProgramProviderProps) {
 export const useProgram = () => useContext(ProgramContext);
 ```
 
-### 7. App.tsx
+#### 7. Modify App.tsx
 
 Now that we have all our providers, let’s wrap our app with them. We're going to re-write the default `App.tsx` with the following changes:
 
 - Import our providers and add in our polyfills
 - Wrap the app first with `ConnectionProvider`, then `AuthorizationProvider`, and finally `ProgramProvider`.
-- Pass in our Devnet endpoint to the `ConnectionProvider`, and our cluster to `AuthorizationProvider`
+- Pass in our Devnet endpoint to the `ConnectionProvider`
+- Pass our cluster to `AuthorizationProvider`
 - Replace the default internal `<View>` with `<MainScreen />` which we'll build in the next step
 
-We'll start by importing our polyfills, replacing our global `Buffer` with the one from the `buffer` library, and adding the rest of our imports:
 
 ```tsx
 // Polyfills at the top
+import "text-encoding-polyfill";
 import "react-native-get-random-values";
 import { Buffer } from "buffer";
 global.Buffer = Buffer;
@@ -677,11 +678,7 @@ import { AuthorizationProvider } from "./components/AuthProvider";
 import { ProgramProvider } from "./components/ProgramProvider";
 import { MainScreen } from "./screens/MainScreen"; // Going to make this
 import React from "react";
-```
 
-Then we can replace the contents of `App` with our providers wrapped around `MainScreen`. Remember, `MainScreen` doesn't exist yet, but we'll come back to it in the next step!
-
-```tsx
 export default function App() {
   const cluster = "devnet";
   const endpoint = clusterApiUrl(cluster);
