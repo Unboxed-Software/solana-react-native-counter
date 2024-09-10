@@ -313,7 +313,7 @@ npm install \
   text-encoding-polyfill
 ```
 
-### 4. ConnectionProvider.tsx
+#### 4. Create ConnectionProvider.tsx
 
 Let’s start adding our Solana functionality. Create a new folder called `components` and within it, a file called `ConnectionProvider.tsx`. This provider will wrap the entire application and make our `Connection` object available throughout. Hopefully you're noticing a pattern: this is identical to the React patterns we've used throughout the course.
 
@@ -347,7 +347,7 @@ export function ConnectionProvider(props: ConnectionProviderProps){
       {children}
     </ConnectionContext.Provider>
   );
-};
+}
 
 export const useConnection = (): ConnectionContextState =>
   useContext(ConnectionContext);
