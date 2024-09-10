@@ -119,9 +119,9 @@ If you need a refresher on this, check out our [lesson on reading data from the 
 
 #### Connecting to a wallet
 
-Writing data to the blockchain has to happen through a transaction. Transactions have to be signed by one or more private keys and sent to an RPC provider. This virtually always happens through a wallet application.
+Writing data to the blockchain has to happen through a transaction. Transactions have to be signed by one or more secret keys and sent to an RPC provider. This virtually always happens through a wallet application.
 
-Typical wallet interaction happens by calling out to a browser extension. On mobile, you use a websocket to start an MWA session. Specifically, you use Android intents where the dApp broadcasts its intent with the `solana-wallet://` scheme. 
+Typical wallet interaction happens by calling out to a browser extension. On mobile, you use a WebSocket to start an MWA session. Specifically, you use Android intents where the dApp broadcasts its intent with the `solana-wallet://` scheme. 
 
 ![Connecting](../assets/basic-solana-mobile-connect.png)
 
@@ -133,7 +133,7 @@ transact(async (wallet: Web3MobileWallet) => {
 }
 ```
 
-This will give you access to the `Web3MobileWallet` object. You can then use this to send transactions to the wallet.
+This will give you access to the `Web3MobileWallet` object. You can then use this to send transactions to the wallet. Again, when you want to access the wallet, it has to be through the function `transact` function's callback.
 
 ### Sending transactions
 
