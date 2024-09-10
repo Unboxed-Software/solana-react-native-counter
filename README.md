@@ -85,20 +85,20 @@ Solana Mobile supports a number of different frameworks. Officially supported ar
 
 To keep the development experience as close as possible with other lessons, we'll be working exclusively with React Native.
 
-## React to React Native
+### From React to React Native
 
 React Native takes the React web framework and applies it to mobile applications. However, while React and React Native feel very similar, there are differences. The best way to understand these differences is to experience them while coding. But, to give you a head start here is a list of some differences to keep in mind:
 
 - React Native compiles down to native iOS and Android applications while React compiles down to a collection of web pages. 
-- In React, you use JSX to program with HTML and CSS, with React Native you use similar syntax to manipulate native UI components. Instead of `<div>`, `<p>` and `<img>` you'll be using `<View>`, `<Text>` and `<Image>`.
+- In React, you use JSX to program with HTML and CSS, with React Native you use similar syntax to manipulate native UI components. It's more like using a UI library like Chakra or Tailwind UI. Instead of `<div>`, `<p>` and `<img>` you'll be using `<View>`, `<Text>` and `<Image>`.
 - Interactions are different. Instead of `onClick`, you'll use `onPress` and other gestures.
-- Many standard React packages may not be compatible with React Native. Fortunately, there are a React Native counterparts to most popular libraries.
+- Many standard React and Node packages may not be compatible with React Native. Fortunately, there are React Native counterparts to the most popular libraries and you can often use polyfills to make Node packages available. If you're not familiar with polyfills, take a look at the [MDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill). In short, polyfills actively replace Node-native libraries to make them work anywhere Node is not running.
 - Setting up a development environment in React Native can be challenging. This will require setting up Android Studio to compile to Android and XCode for iOS. React Native has a [really good guide](https://reactnative.dev/docs/environment-setup?guide=native) for this.
 - For regular development and testing, you'll use a physical mobile device or an emulator to run your code. This relies on a tool called Metro that comes pre-installed. React native's setup guide also covers this.
-- React Native gives you access to the phone's hardware that React can't provide. This includes things like the phone's accelerometer, allocated storage, and more.
-- React Native introduces new config files and build folders. For example `ios` and `android` contain platform specific information, then then we have config files like `Gemfile` and `metro.config.js`. Generally, leave all configurations alone and just worry about writing your code, the starting point for which will be in `App.tsx`.
+- React Native gives you access to the phone's hardware that React can't provide. This includes things like the phone's camera, accelerometer, and more.
+- React Native introduces new config files and build folders. For example, the `ios` and `android` directories contain platform-specific information. Additionally, there are config files like `Gemfile` and `metro.config.js`. Generally, leave all configurations alone and just worry about writing your code, the starting point for which will be in `App.tsx`.
 
-There is a learning curve, but if you know React you're not nearly as far from being able to develop mobile apps as you think! It may feel jarring to start, but after a few hours of React native development you'll start to feel much more comfortable. You'll likely feel much more confident after [this lesson's demo](#demo).
+There is a learning curve, but if you know React you're not nearly as far from being able to develop mobile apps as you think! It may feel jarring to start, but after a few hours of React Native development, you'll start to feel much more comfortable. You'll likely feel much more confident even after [this lesson's lab](#lab).
 
 ## Creating a Solana dApp with React Native
 
