@@ -28,25 +28,26 @@ Most relevant to your development journey is the Mobile Wallet Adapter (MWA). Th
 In these units, we'll develop mobile apps that interact with the Solana network.
 This opens up a whole new paradigm of blockchain use cases and behaviors.
 
-### Solana Mobile Use Cases
+#### Solana Mobile Use Cases
 
 The crypto mobile market has a lot of untapped potential. With the right apps, everyone can walk around with the power of Solana in their pockets. Here are a few examples of what Solana mobile development can unlock:
 
 **Mobile Banking and Trading (DeFi)**
 
-DeFi apps aren't new, but they're often web-bound and don't have a great mobile experience. By comparison, most traditional banking right now happens on mobile. With SMS, you can now bank and trade with your own wallet, where you hold your own keys.
+DeFi apps aren't new, but they're often web-bound and don't have a great mobile experience. By comparison, most traditional banking right now happens on mobile. With SMS, you can now bank and trade using native mobile apps with your own wallet, where you hold your own keys.
 
 **Mobile Gaming with Solana Micropayments**
 
-Traditional mobile games are a cash cow. 50% of the video game industry’s valuation is due to Mobile gaming with "micropayments." However, due to payment facilitator fees, these in-game purchases usually have a minimum of $0.99. With Solana, it's possible to unlock true micropayments. Need an extra life? How about pay 0.0001 sol? 
+Mobile games account for roughly 50% of the video game industry’s total value, largely due to small in-game purchases. However, payment processing fees usually mean these in-game purchases have a minimum of $0.99 USD. With Solana, it's possible to unlock true micropayments. Need an extra life? That'll be 0.0001 SOL.
 
 **Mobile E-Commerce** 
 
 SMS can enable a new wave of mobile e-commerce shoppers to pay directly from their favorite Solana wallet. Imagine a world where you can use your Solana wallet as seamlessly as you can use Apply Pay.
 
-Mobile crypto is the future, and Solana knows this. Let’s dive in and learn how we can be part of it.
+To summarize, mobile blockchain opens up many doors. Let’s dive in and learn how
+we can be part of it:
 
-### How it differs
+#### How Solana development differs between native mobile apps and web
 
 Solana wallet interaction differs slightly on mobile compared to web. The core wallet functionality is the same: the wallet holds your private keys and uses them to sign and send transactions. To avoid having different interfaces between wallets, developers abstracted that functionality into the Solana Wallet Adapter standard. This remains the standard on web. The mobile counterpart is the Mobile Wallet Adapter (MWA).
 
