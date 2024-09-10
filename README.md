@@ -943,7 +943,7 @@ export function CounterButton() {
 }
 ```
 
-### 11. Build and Run
+#### 11. Build and Run
 
 Now it’s time to test that everything works! Build and run with the following command:
 
@@ -955,16 +955,21 @@ This will open the app in your emulator, click the + button in the bottom right.
 
 ![Counter App](../assets/basic-solana-mobile-counter-app.png)
 
-If you run into some problems here are what they could be:
+If you run into some problems, here are some examples of what they could be and how to fix them:
 
 - Application does not build → Exit Metro with ctrl+c and try again
 - Nothing happens when you press the `CounterButton` → Make sure you have Solana wallet installed ( like the fake wallet we installed in Prerequisites )
-- You get stuck in a forever loop while calling `increment` → This is likely due to you reaching a Devnet airdrop rate limit. Take out the airdrop section in `CounterButton` and manually send some Devnet sol to your wallet’s address (printed in the console)
+- You get stuck in a forever loop while calling `increment` → This is likely due to you reaching a Devnet airdrop rate limit. Take out the airdrop section in `CounterButton` and manually send some Devnet SOL to your wallet’s address (printed in the console)
 
-If you get stuck, feel free to check out the [full solution code](https://github.com/Unboxed-Software/solana-react-native-counter) on the `main` branch of the repository.
+That's it! You've made your first Solana Mobile dApp. If you get stuck, feel free to check out the [full solution code](https://github.com/Unboxed-Software/solana-react-native-counter) on the `main` branch of the repository.
 
-# Challenge
+## Challenge
 
-You’re challenge today is to take our app and add a decrement function. Simply add another button and call the `decrement` function on our program. This instruction already exists on the program and its IDL, so you simply need to write client code to call the instruction.
+You’re challenge today is to take our app and add a decrement function. Simply add another button and call the `decrement` function on our program. This instruction already exists on the program and its IDL, so you simply need to write client code to call it.
 
-If you want, take a look at the [solution code on the `solution` branch](https://github.com/Unboxed-Software/solana-react-native-counter/tree/solution).
+After you give it a try on your own, feel free to take a look at the [solution code on the `solution` branch](https://github.com/Unboxed-Software/solana-react-native-counter/tree/solution).
+
+<Callout type="success" title="Completed the lab?">
+Push your code to GitHub and
+[tell us what you thought of this lesson](https://form.typeform.com/to/IPH0UGz7#answers-lesson=c15928ce-8302-4437-9b1b-9aa1d65af864)!
+</Callout>
