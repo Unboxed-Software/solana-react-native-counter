@@ -265,7 +265,7 @@ There will be more files and considerations, but these are the most important fi
 
 ### 2. Create the App
 
-Now that you've got some of the basic setup and structure down, let’s create a new app with the following command:
+Now that you've got some of the basic setup and structure down, let’s scaffold a new app with the following command:
 
 ```bash
 npx react-native@latest init counter --npm
@@ -273,14 +273,14 @@ npx react-native@latest init counter --npm
 
 This scaffolds a new React Native project for us called `counter`.
 
-Let's make sure everything is set up properly by starting the default app and running it on our android emulator.
+Let's make sure everything is set up properly by starting the default app and running it on our Android emulator.
 
 ```bash
 cd counter
 npm run android
 ```
 
-This should open and run the app in your Android emulator. If you run into problems, check to make sure you’ve accomplished everything in the prerequisite section.
+This should open and run the app in your Android emulator. If you run into problems, check to make sure you’ve accomplished everything in the [prerequisites section](#0-prerequisites).
 
 ### 3. Install Dependencies
 
