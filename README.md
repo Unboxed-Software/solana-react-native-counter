@@ -211,15 +211,16 @@ This program already exists and is already deployed on Devnet. Feel free to chec
 
 We’ll write this application in vanilla React Native without a starting template. Solana Mobile provides a [React Native template](https://docs.solanamobile.com/react-native/react-native-scaffold) that shortcuts some of the boilerplate, but there's no better way to learn than to do something from scratch.
 
-### 0. Prerequisites
+#### 0. Prerequisites
 
 React Native allows us to write mobile applications using similar patterns as React. However, under the hood our React code needs to be compiled down to languages and frameworks that work with the device's native OS. This requires a few prerequisite setup items:
 
-1. [Setup a React Native dev environment](https://reactnative.dev/docs/environment-setup?guide=native#creating-a-new-application). Go through the ***entire article*** following the steps using Android as the target OS. For convenience, we've typed out the high level steps below. Keep in mind that the source article might change from the time of writing to when you're reading this. The source article is your source of truth here.
+1. [Setup a React Native dev environment](https://reactnative.dev/docs/environment-setup?guide=native#creating-a-new-application). Go through the [**_entire article_**](https://reactnative.dev/docs/environment-setup?guide=native#creating-a-new-application), using Android as the target OS. For convenience, we've typed out the high level steps below. Keep in mind that the source article might change from the time of writing to when you're reading this. The source article is your source of truth here.
     1. Install dependencies
     2. Install Android Studio
-    3. Configure **ANDROID_HOME** environment variable 
-    4. Create a new sample project (this is only used to set up the emulator)
+    3. Install the Android SDK
+    4. Configure **ANDROID_HOME** environment variable 
+    5. Create a new sample project (this is only used to set up the emulator)
         1. If you run into the error `✖ Copying template`, add the `--npm` flag at the end
         
         ```bash
@@ -246,11 +247,11 @@ React Native allows us to write mobile applications using similar patterns as Re
         ![Fake Wallet](../assets/basic-solana-mobile-fake-wallet.png)
         
     4. For debugging, you’ll want to use `Logcat`. Now that your fake wallet is running on the emulator, go to `View -> Tool Windows -> Logcat`. This will open up a console logging out what’s happening with fake wallet.
- 3. (Optional) Install other Solana wallets like Phantom on the Google Play store.
+ 3. (Optional) Install other [Solana wallets](https://solana.com/ecosystem/explore?categories=wallet) on the Google Play store.
 
 Lastly, if you run into Java versioning issues - you’ll want to be on Java version 11. To check what you’re currently running type `java --version` in your terminal.
 
-### 1. Plan out App Structure
+#### 1. Plan out App Structure
 
 Before we do any coding, let's conceptualize the outline of the app. Again, this app will connect to and interact with the counter program we've already deployed to Devnet. To do this, we'll need the following:
 
