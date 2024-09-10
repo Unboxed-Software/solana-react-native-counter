@@ -178,7 +178,7 @@ Since two applications are involved in sending transactions, debugging can be tr
 
 Fortunately, [Logcat on Android Studio](https://developer.android.com/studio/debug/logcat) makes it possible to see logs from all applications on your device.
 
-If you prefer not to use Logcat, the other method you could try is to only use the wallet to sign transactions, and then send them in your code. This will allows you to better debug the transaction if you’re running into problems.
+If you prefer not to use Logcat, the other method you could try is to only use the wallet to sign transactions, and then send them in your code. This allows you to better debug the transaction if you’re running into problems.
 
 ### Releasing
 
