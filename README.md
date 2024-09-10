@@ -107,7 +107,7 @@ library. The only difference you'll need to know is anytime you need to make a c
 
 ![dApp Flow](assets/basic-solana-mobile-flow.png)
 
-### Reading data
+#### Reading data
 
 Reading data from a Solana cluster in React Native is the exact same as in React. You use the `useConnection` hook to grab the `Connection` object. Using that, you can get account info. Since reading is free, we don’t need to actually connect to the wallet.
 
@@ -115,9 +115,9 @@ Reading data from a Solana cluster in React Native is the exact same as in React
 const account = await connection.getAccountInfo(account);
 ```
 
-If you need a refresher on this, check out our [lesson on reading data from the blockchain](./intro-to-reading-data.md).
+If you need a refresher on this, check out our [lesson on reading data from the blockchain](https://github.com/solana-foundation/developer-content/blob/main/content/courses/intro-to-solana/intro-to-reading-data.md).
 
-### Connecting to a wallet
+#### Connecting to a wallet
 
 Writing data to the blockchain has to happen through a transaction. Transactions have to be signed by one or more private keys and sent to an RPC provider. This virtually always happens through a wallet application.
 
