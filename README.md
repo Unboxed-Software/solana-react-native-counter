@@ -70,7 +70,7 @@ The remainder of this lesson will focus on developing Android apps with the MWA.
 
 ### Supported Frameworks
 
-Solana Mobile supports a number of different frameworks. Officially supported are React native and native Android, with community SDKs for Flutter, Unity, and Unreal Engine.
+Solana Mobile supports a number of different frameworks. Officially supported are React Native and native Android, with community SDKs for Flutter, Unity, and Unreal Engine.
 
 **Solana SDKs:**
 
