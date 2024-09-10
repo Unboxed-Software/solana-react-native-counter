@@ -560,11 +560,11 @@ export function AuthorizationProvider(props: AuthProviderProps) {
 export const useAuthorization = () => React.useContext(AuthorizationContext);
 ```
 
-### 6. ProgramProvider.tsx
+#### 6. Create ProgramProvider.tsx
 
 The last provider we need is our program provider. This will expose the counter program we want to interact with.
 
-Since we're using the Anchor TS client to interact with our program, we need the program's IDL. Start by creating a root-level folder called `models`, then create a new file `anchor-counter.ts`. Paste the contents of the [Anchor Counter IDL](../assets/counter-rn-idl.ts) into this new file.
+Since we're using the Anchor TS client to interact with our program, we need the program's IDL. Start by creating a root-level folder called `models`, then create a new file `anchor-counter.ts`. Paste the contents of the [Anchor Counter IDL](https://github.com/solana-foundation/developer-content/blob/main/public/assets/courses/unboxed/counter-rn-idl.ts) into this new file.
 
 Next, create the file `ProgramProvider.tsx` inside of `components`. Inside we'll create the program provider to surface our program and the counter PDA.
 
