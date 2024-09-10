@@ -10,14 +10,14 @@ description:
   "Learn how to build native mobile apps using blockchain functionality"
 ---
 
-# TL;DR
+## Summary
 
-- The Solana Mobile Wallet Adapter introduces a new protocol and flow for mobile apps to interact with wallets\
-  - The Mobile Wallet Adapter creates a web socket connection between mobile apps and mobile wallets, allowing apps to submit transactions for signing
-- The simplest way to get started creating Solana mobile applications is with Solana Mobile's React Native packages `@solana-mobile/mobile-wallet-adapter-protocol` and `@solana-mobile/mobile-wallet-adapter-protocol-web3js`
-  - React native is very similar to React with a few mobile quirks
+- The Solana Mobile Wallet Adapter (MWA) introduces a new protocol and flow for mobile apps to interact with wallets.
+  - The Mobile Wallet Adapter creates a web socket connection between mobile apps and mobile wallets, allowing native mobile apps to submit transactions for signing
+- The simplest way to get started creating Solana mobile applications is with Solana Mobile's [React Native packages](https://docs.solanamobile.com/react-native/setup) `@solana-mobile/mobile-wallet-adapter-protocol` and `@solana-mobile/mobile-wallet-adapter-protocol-web3js`
+  - React Native is very similar to React with a few mobile quirks
 
-# Overview
+## Overview
 
 Solana has gone mobile! For a long time, dApps were web-first rather than mobile-first. That started to change with the announcement of the Solana Mobile Stack (SMS) in 2022. This stack is designed to create dApps that provide a seamless mobile UX. It consists of the [Mobile Wallet Adapter (MWA)](https://docs.solanamobile.com/getting-started/overview#mobile-wallet-adapter), [Seed Vault](https://docs.solanamobile.com/getting-started/overview#seed-vault) and the [Solana dApp Store](https://docs.solanamobile.com/getting-started/overview#solana-dapp-store).
 
