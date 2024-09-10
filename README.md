@@ -56,17 +56,17 @@ mobile operating system. There's no way to surface functions from one native app
 
 We'll dig into the specifics of the Mobile Wallet Adapter in a [later lesson](https://github.com/solana-foundation/developer-content/blob/main/content/courses/mobile/mwa-deep-dive.md), but it effectively opens a WebSocket between applications to facilitate communication. That way a separate app can provide the wallet app with the transaction to be signed and sent, and the wallet app can respond with appropriate status updates.
 
-### Supported Operating Systems
+#### Supported Operating Systems
 
 At the time of writing, Android is the only mobile OS supported by the Mobile Wallet Adapter.
 
-On `Android`, a websocket connection is able to persist between apps, even when the wallet app is in the background.
+On Android, a WebSocket connection is able to persist between apps, even when the wallet app is in the background.
 
-On `iOS`, the lifetime of a connection between apps is purposefully limited by the operating system. Specifically, iOS will quickly suspend connections when an app is pushed to the background. This kills the MWA websocket connection. This is an inherent design difference between iOS and Android (probably made to preserve battery, network usage, etc).
+On iOS, the lifetime of a connection between apps is purposefully limited by the operating system. Specifically, iOS will quickly suspend connections when an app is pushed to the background. This kills the MWA websocket connection. This is an inherent design difference between iOS and Android (probably made to preserve battery, network usage, etc).
 
-However, this doesn’t mean that Solana dApps can’t run on iOS at all. You can still create a Mobile Web App using the [standard wallet adapter](https://github.com/solana-labs/wallet-adapter)` library. Your users can then install a mobile-friendly wallet like the [Glow Wallet](https://glow.app/).
+However, this doesn’t mean that Solana dApps can’t run on iOS at all. You can still create a Mobile Web App using the [standard wallet adapter](https://github.com/solana-labs/wallet-adapter) library. Your users can then install a mobile-friendly wallet like the [Glow Wallet](https://glow.app/).
 
-This lesson will focus on developing Android apps with the MWA.
+The remainder of this lesson will focus on developing Android apps with the MWA.
 
 ### Supported Frameworks
 
