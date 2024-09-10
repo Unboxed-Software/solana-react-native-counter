@@ -284,19 +284,20 @@ This should open and run the app in your Android emulator. If you run into probl
 
 ### 3. Install Dependencies
 
-We’ll need to add in our Solana dependencies. [The Solana Mobile docs provide a nice list of packages](https://docs.solanamobile.com/react-native/setup) we need and why we need them: 
+We’ll need to add in our Solana dependencies. [The Solana Mobile docs provide a nice list of packages](https://docs.solanamobile.com/react-native/setup) and explanations for why we need them: 
 
-- `@solana-mobile/mobile-wallet-adapter-protocol`: A React Native/Javascript API enabling interaction with MWA-compatible wallets.
-- `@solana-mobile/mobile-wallet-adapter-protocol-web3js`: A convenience wrapper to use common primitives from [@solana/web3.js](https://github.com/solana-labs/solana-web3.js) – such as `Transaction` and `Uint8Array`.
-- `@solana/web3.js`: Solana Web Library for interacting with Solana network through the [JSON RPC API](https://docs.solana.com/api/http).
-- `react-native-get-random-values` Secure random number generator polyfill for `web3.js` underlying Crypto library on React Native.
-- `buffer` Buffer polyfill also needed for `web3.js` on React Native.
+- `@solana-mobile/mobile-wallet-adapter-protocol`: A React Native/Javascript API enabling interaction with MWA-compatible wallets
+- `@solana-mobile/mobile-wallet-adapter-protocol-web3js`: A convenience wrapper to use common primitives from [@solana/web3.js](https://github.com/solana-labs/solana-web3.js) – such as `Transaction` and `Uint8Array`
+- `@solana/web3.js`: Solana Web Library for interacting with the Solana network through the [JSON RPC API](https://docs.solana.com/api/http)
+- `react-native-get-random-values` Secure random number generator polyfill for `web3.js` underlying Crypto library on React Native
+- `buffer` Buffer polyfill also needed for `web3.js` on React Native
 
 In addition to this list, we'll add two more packages:
 - `@coral-xyz/anchor`: The Anchor TS client.
 - `assert`: A polyfill that lets Anchor do its thing.
+- `text-encoding-polyfill`: A polyfill needed to create the `Program` object
 
-If you’re not familiar: polyfills actively replace node-native libraries to make them work anywhere Node is not running. We’ll finish our polyfill setup shortly.
+If you’re not familiar: polyfills actively replace Node-native libraries to make them work anywhere Node is not running. We’ll finish our polyfill setup shortly.
 
 For now, install dependencies using the following command:
 
@@ -308,7 +309,8 @@ npm install \
   react-native-get-random-values \
   buffer \
   @coral-xyz/anchor \
-  assert
+  assert \
+  text-encoding-polyfill
 ```
 
 ### 4. ConnectionProvider.tsx
