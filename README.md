@@ -255,9 +255,9 @@ Lastly, if you run into Java versioning issues - you’ll want to be on Java ver
 
 Before we do any coding, let's conceptualize the outline of the app. Again, this app will connect to and interact with the counter program we've already deployed to Devnet. To do this, we'll need the following:
 
-- A `Connection` object to interact with Solana. (`ConnectionProvider.tsx`)
-- Access to our counter program. (`ProgramProvider.tsx`)
-- Connection to a wallet to sign and send requests. (`AuthProvider.tsx`)
+- A `Connection` object to interact with Solana (`ConnectionProvider.tsx`)
+- Access to our counter program (`ProgramProvider.tsx`)
+- Authorization for a wallet to sign and send requests (`AuthProvider.tsx`)
 - Text to display our counter value (`CounterView.tsx`)
 - A button to press to increment our count (`CounterButton.tsx`)
   
