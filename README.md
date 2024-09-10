@@ -135,21 +135,23 @@ transact(async (wallet: Web3MobileWallet) => {
 
 This will give you access to the `Web3MobileWallet` object. You can then use this to send transactions to the wallet. Again, when you want to access the wallet, it has to be through the function `transact` function's callback.
 
-### Sending transactions
+#### Signing and sending transactions
 
-Transacting with a wallet through the MWA has a few extra steps compared to the web counterpart. The flow is as follows:
+Sending a transaction happens inside the `transact` callback. The flow is as follows:
 
-1. Establish a session with a wallet using `transact`
-2. Request Authorization with the `authorizeSession(wallet)` function from the `useAuthorization()` hook.
-3. Sign Transaction with `wallet.signTransactions` or sign and send with `wallet.signAndSendTransactions`. 
+1. Establish a session with a wallet using `transact` which will have a callback of `async (wallet: Web3MobileWallet) => {...}`.
+2. Inside the callback, request authorization with the `wallet.authorize` or `wallet.reauthorize` method depending on the state of the wallet.
+3. Sign the transaction with `wallet.signTransactions` or sign and send with `wallet.signAndSendTransactions`. 
 
 ![Transacting](../assets/basic-solana-mobile-transact.png)
 
-Note that `await authorizeSession(wallet)` will also reauthorize a session if one has already been established. Generally, if you want to send a transaction to the blockchain the following code snippet is what you’ll need:
+<Callout type="note">You may want to create a `useAuthorization()` hook to manage the wallet's authorization state. We'll practice this in the [Lab](#lab).</Callout>
+
+Here is an example of sending a transaction using MWA:
 
 ```tsx
-const {authorizeSession} = useAuthorization();
-const {connection} = useConnection();
+const { authorizeSession } = useAuthorization();
+const { connection } = useConnection();
 
 const sendTransactions = (transaction: Transaction)=> {
 
@@ -166,11 +168,11 @@ const sendTransactions = (transaction: Transaction)=> {
 		const signature = await wallet.signAndSendTransactions({
         transactions: [transaction],
     });
-	})
-}
+	});
+};
 ```
 
-### Debugging
+#### Debugging
 
 Since two applications are involved in sending transactions, debugging can be tricky. Specifically, you won’t be able to see the wallet's debug logs the way you can see your dApps logs.
 
