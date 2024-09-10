@@ -100,11 +100,12 @@ React Native takes the React web framework and applies it to mobile applications
 
 There is a learning curve, but if you know React you're not nearly as far from being able to develop mobile apps as you think! It may feel jarring to start, but after a few hours of React Native development, you'll start to feel much more comfortable. You'll likely feel much more confident even after [this lesson's lab](#lab).
 
-## Creating a Solana dApp with React Native
+### Creating a Solana dApp with React Native
 
-Solana React Native dApps are virtually identical to React dApps. The primary difference is in the wallet interaction. Instead of the wallet being available in the browser, your dApp will create an MWA session with the wallet app of your choosing using a websocket. Fortunately, most of this is abstracted for you in the MWA library.
+Solana React Native dApps are virtually identical to React dApps. The primary difference is in the wallet interaction. Instead of the wallet being available in the browser, your dApp will create an MWA session with the wallet app of your choosing using a websocket. Fortunately, this is abstracted for you in the MWA
+library. The only difference you'll need to know is anytime you need to make a call to the wallet you'll be using the `transact` function, which we'll talk about soon.
 
-![dApp Flow](../assets/basic-solana-mobile-flow.png)
+![dApp Flow](assets/basic-solana-mobile-flow.png)
 
 ### Reading data
 
