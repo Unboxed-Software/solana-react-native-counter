@@ -201,7 +201,7 @@ These are hurdles for sure, but there's hope. Here are some things to keep in mi
 
 ### Conclusion
 
-Getting started with mobile Solana development is fairly straightforward thanks to SMS. Remember to look at our other lessons if you need a refresher on Solana development more broadly.
+Getting started with mobile Solana development is fairly straightforward thanks to SMS. While React Native is slightly different than React, the code you have to write is more similar than different. The primary difference is that the portion of your code that interacts with wallets will exist within the `transact` callback. Remember to look at our other lessons if you need a refresher on Solana development more broadly.
 
 # Demo
 
