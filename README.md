@@ -355,20 +355,20 @@ export const useConnection = (): ConnectionContextState =>
 
 ### 5. AuthProvider.tsx
 
-The next Solana provision we’ll need is the auth provider. This is the main difference between mobile and web development. What we’re implementing here is roughly equivalent to the `WalletProvider` that we’re used to in web apps. However, since we're using Android and its natively installed wallets, the flow to connect and utilize them is a bit different. Most notably, we need to follow the mobile wallet adapter protocol (MWA). 
+The next Solana provision we’ll need is the auth provider. This is one of the main differences between mobile and web development. What we’re implementing here is roughly equivalent to the `WalletProvider` that we’re used to in web apps. However, since we're using Android and its natively installed wallets, the flow to connect and utilize them is a bit different. Most notably, we need to follow the MWA protocol. 
 
 We do this by providing the following in our `AuthProvider`:
 
 - `accounts`: If the user has multiple wallets, different accounts are maintained in this array of Accounts.
 - `selectedAccount`: The current selected account for the transaction.
-- `authorizeSession(wallet)`: Authorizes (or reauthorizes, if token is expired) the wallet for the user and returns an account which will act as the selected account for the session.
-- `deauthorizeSession(wallet)`: Deauthorizes the `selectedAccount`.
+- `authorizeSession(wallet)`: Authorizes (or reauthorizes, if token is expired) the `wallet` for the user and returns an account which will act as the selected account for the session. The `wallet` variable is from the callback of the `transact` function you call independently anytime you want to interact with a wallet.
+- `deauthorizeSession(wallet)`: Deauthorizes the `wallet`.
 - `onChangeAccount`: Acts as an handler when `selectedAccount` is changed.
 
 We’re also going to throw in some utility methods:
 
-- `getPublicKeyFromAddress(base64Address)`: Creates a new Public Key object from the Base64 address.
-- `getAuthorizationFromAuthResult`: Handles the authorization result, extracts relevant data from the result, and returns the `Authorization` context object.
+- `getPublicKeyFromAddress(base64Address)`: Creates a new Public Key object from the Base64 address  given from the `wallet` object
+- `getAuthorizationFromAuthResult`: Handles the authorization result, extracts relevant data from the result, and returns the `Authorization` context object
 
 We’ll expose all of this through a `useAuthorization` hook.
 
@@ -511,7 +511,7 @@ export function AuthorizationProvider(props: AuthProviderProps) {
 
   const deauthorizeSession = useCallback(
     async (wallet: DeauthorizeAPI) => {
-      if (authorization?.authToken == null) {
+      if (authorization?.authToken === null) {
         return;
       }
 
