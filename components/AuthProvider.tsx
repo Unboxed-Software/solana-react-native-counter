@@ -1,4 +1,4 @@
-import {Cluster, PublicKey} from '@solana/web3.js';
+import { Cluster, PublicKey } from "@solana/web3.js";
 import {
   Account as AuthorizedAccount,
   AuthorizationResult,
@@ -7,30 +7,24 @@ import {
   Base64EncodedAddress,
   DeauthorizeAPI,
   ReauthorizeAPI,
-} from '@solana-mobile/mobile-wallet-adapter-protocol';
-import {toUint8Array} from 'js-base64';
-import {useState, useCallback, useMemo, ReactNode} from 'react';
-import React from 'react';
+} from "@solana-mobile/mobile-wallet-adapter-protocol";
+import { toUint8Array } from "js-base64";
+import { useState, useCallback, useMemo, ReactNode } from "react";
+import React from "react";
 
-export const AuthUtils = {
+const AuthUtils = {
   getAuthorizationFromAuthResult: (
     authResult: AuthorizationResult,
     previousAccount?: Account,
   ): Authorization => {
-    let selectedAccount: Account;
-    if (
-      //no wallet selected yet
-      previousAccount == null ||
-      //the selected wallet is no longer authorized
+    const selectedAccount =
+      previousAccount === undefined ||
       !authResult.accounts.some(
-        ({address}) => address === previousAccount.address,
+        ({ address }) => address === previousAccount.address,
       )
-    ) {
-      const firstAccount = authResult.accounts[0];
-      selectedAccount = AuthUtils.getAccountFromAuthorizedAccount(firstAccount);
-    } else {
-      selectedAccount = previousAccount;
-    }
+        ? AuthUtils.getAccountFromAuthorizedAccount(authResult.accounts[0])
+        : previousAccount;
+
     return {
       accounts: authResult.accounts.map(
         AuthUtils.getAccountFromAuthorizedAccount,
@@ -42,19 +36,13 @@ export const AuthUtils = {
 
   getAccountFromAuthorizedAccount: (
     authAccount: AuthorizedAccount,
-  ): Account => {
-    return {
-      ...authAccount,
-      publicKey: AuthUtils.getPublicKeyFromAddress(authAccount.address),
-    };
-  },
-
-  getPublicKeyFromAddress: (address: Base64EncodedAddress) => {
-    return new PublicKey(toUint8Array(address));
-  },
+  ): Account => ({
+    ...authAccount,
+    publicKey: new PublicKey(toUint8Array(authAccount.address)),
+  }),
 };
 
-export type Account = Readonly<{
+type Account = Readonly<{
   address: Base64EncodedAddress;
   label?: string;
   publicKey: PublicKey;
@@ -66,11 +54,11 @@ type Authorization = Readonly<{
   selectedAccount: Account;
 }>;
 
-export const AppIdentity = {
-  name: 'Solana Counter Incrementor',
+const APP_IDENTITY = {
+  name: "Solana Counter Incrementor",
 };
 
-export type AuthorizationProviderContext = {
+type AuthorizationProviderContext = {
   accounts: Account[] | null;
   authorizeSession: (wallet: AuthorizeAPI & ReauthorizeAPI) => Promise<Account>;
   deauthorizeSession: (wallet: DeauthorizeAPI) => void;
@@ -80,25 +68,24 @@ export type AuthorizationProviderContext = {
 
 const AuthorizationContext = React.createContext<AuthorizationProviderContext>({
   accounts: null,
-  authorizeSession: (_wallet: AuthorizeAPI & ReauthorizeAPI) => {
-    throw new Error('Provider not initialized');
+  authorizeSession: () => {
+    throw new Error("Provider not initialized");
   },
-  deauthorizeSession: (_wallet: DeauthorizeAPI) => {
-    throw new Error('Provider not initialized');
+  deauthorizeSession: () => {
+    throw new Error("Provider not initialized");
   },
-  onChangeAccount: (_nextSelectedAccount: Account) => {
-    throw new Error('Provider not initialized');
+  onChangeAccount: () => {
+    throw new Error("Provider not initialized");
   },
   selectedAccount: null,
 });
 
-export type AuthProviderProps = {
+type AuthProviderProps = {
   children: ReactNode;
   cluster: Cluster;
 };
 
-export function AuthorizationProvider(props: AuthProviderProps) {
-  const {children, cluster} = {...props};
+function AuthorizationProvider({ children, cluster }: AuthProviderProps) {
   const [authorization, setAuthorization] = useState<Authorization | null>(
     null,
   );
@@ -110,55 +97,47 @@ export function AuthorizationProvider(props: AuthProviderProps) {
         authorization?.selectedAccount,
       );
       setAuthorization(nextAuthorization);
-
       return nextAuthorization;
     },
-    [authorization, setAuthorization],
+    [authorization],
   );
 
   const authorizeSession = useCallback(
     async (wallet: AuthorizeAPI & ReauthorizeAPI) => {
-      const authorizationResult = await (authorization
-        ? wallet.reauthorize({
+      const authorizationResult = authorization
+        ? await wallet.reauthorize({
             auth_token: authorization.authToken,
-            identity: AppIdentity,
+            identity: APP_IDENTITY,
           })
-        : wallet.authorize({cluster, identity: AppIdentity}));
+        : await wallet.authorize({ cluster, identity: APP_IDENTITY });
       return (await handleAuthorizationResult(authorizationResult))
         .selectedAccount;
     },
-    [authorization, handleAuthorizationResult],
+    [authorization, cluster, handleAuthorizationResult],
   );
 
   const deauthorizeSession = useCallback(
     async (wallet: DeauthorizeAPI) => {
-      if (authorization?.authToken == null) {
-        return;
+      if (authorization?.authToken) {
+        await wallet.deauthorize({ auth_token: authorization.authToken });
+        setAuthorization(null);
       }
-
-      await wallet.deauthorize({auth_token: authorization.authToken});
-      setAuthorization(null);
     },
-    [authorization, setAuthorization],
+    [authorization],
   );
 
-  const onChangeAccount = useCallback(
-    (nextAccount: Account) => {
-      setAuthorization(currentAuthorization => {
-        if (
-          //check if the account is no longer authorized
-          !currentAuthorization?.accounts.some(
-            ({address}) => address === nextAccount.address,
-          )
-        ) {
-          throw new Error(`${nextAccount.address} is no longer authorized`);
-        }
-
-        return {...currentAuthorization, selectedAccount: nextAccount};
-      });
-    },
-    [setAuthorization],
-  );
+  const onChangeAccount = useCallback((nextAccount: Account) => {
+    setAuthorization(currentAuthorization => {
+      if (
+        currentAuthorization?.accounts.some(
+          ({ address }) => address === nextAccount.address,
+        )
+      ) {
+        return { ...currentAuthorization, selectedAccount: nextAccount };
+      }
+      throw new Error(`${nextAccount.address} is no longer authorized`);
+    });
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -178,4 +157,12 @@ export function AuthorizationProvider(props: AuthProviderProps) {
   );
 }
 
-export const useAuthorization = () => React.useContext(AuthorizationContext);
+const useAuthorization = () => React.useContext(AuthorizationContext);
+
+export {
+  AuthorizationProvider,
+  useAuthorization,
+  type Account,
+  type AuthProviderProps,
+  type AuthorizationProviderContext,
+};
