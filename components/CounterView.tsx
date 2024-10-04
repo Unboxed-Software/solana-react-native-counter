@@ -1,22 +1,22 @@
-import {View, Text, StyleSheet} from 'react-native';
-import {useConnection} from './ConnectionProvider';
-import {useProgram, CounterAccount} from './ProgramProvider';
-import {useEffect, useState} from 'react';
-import {AccountInfo} from '@solana/web3.js';
-import React from 'react';
+import { View, Text, StyleSheet } from "react-native";
+import { useConnection } from "./ConnectionProvider";
+import { useProgram, CounterAccount } from "./ProgramProvider";
+import { useEffect, useState } from "react";
+import { AccountInfo } from "@solana/web3.js";
+import React from "react";
 
 const counterStyle = StyleSheet.create({
   counter: {
     fontSize: 48,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "black",
+    textAlign: "center",
   },
 });
 
 export function CounterView() {
-  const {connection} = useConnection();
-  const {program, counterAddress} = useProgram();
+  const { connection } = useConnection();
+  const { program, counterAddress } = useProgram();
   const [counter, setCounter] = useState<CounterAccount>();
 
   // Fetch Counter Info
@@ -30,12 +30,12 @@ export function CounterView() {
       (accountInfo: AccountInfo<Buffer>) => {
         try {
           const data = program.coder.accounts.decode(
-            'counter',
+            "counter",
             accountInfo.data,
           );
           setCounter(data);
         } catch (e) {
-          console.log('account decoding error: ' + e);
+          console.log("account decoding error: " + e);
         }
       },
     );

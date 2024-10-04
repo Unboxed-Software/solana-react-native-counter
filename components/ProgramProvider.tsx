@@ -1,6 +1,11 @@
-import {AnchorProvider, IdlAccounts, Program, setProvider} from '@project-serum/anchor';
-import {Keypair, PublicKey} from '@solana/web3.js';
-import {AnchorCounter, IDL} from '../models/anchor-counter';
+import {
+  AnchorProvider,
+  IdlAccounts,
+  Program,
+  setProvider,
+} from "@coral-xyz/anchor";
+import { Keypair, PublicKey } from "@solana/web3.js";
+import { AnchorCounter, IDL } from "../models/anchor-counter";
 import React, {
   ReactNode,
   createContext,
@@ -9,10 +14,10 @@ import React, {
   useEffect,
   useMemo,
   useState,
-} from 'react';
-import {useConnection} from './ConnectionProvider';
+} from "react";
+import { useConnection } from "./ConnectionProvider";
 
-export type CounterAccount = IdlAccounts<AnchorCounter>['counter'];
+export type CounterAccount = IdlAccounts<AnchorCounter>["counter"];
 
 export type ProgramContextType = {
   program: Program<AnchorCounter> | null;
@@ -28,16 +33,20 @@ export type ProgramProviderProps = {
   children: ReactNode;
 };
 
-export function ProgramProvider(props: ProgramProviderProps) {
-  const { children } = props;
-  const {connection} = useConnection();
+export function ProgramProvider({ children }: ProgramProviderProps) {
+  const { connection } = useConnection();
   const [program, setProgram] = useState<Program<AnchorCounter> | null>(null);
   const [counterAddress, setCounterAddress] = useState<PublicKey | null>(null);
 
   const setup = useCallback(async () => {
     const programId = new PublicKey(
-      'ALeaCzuJpZpoCgTxMjJbNjREVqSwuvYFRZUfc151AKHU',
+      "ALeaCzuJpZpoCgTxMjJbNjREVqSwuvYFRZUfc151AKHU",
     );
+
+    // MockWallet is a placeholder wallet used for initializing the AnchorProvider.
+    // In a mobile app, we don't need a real wallet here because the actual signing
+    // will be done by the user's mobile wallet app. This mock wallet allows us to
+    // set up the provider without a real wallet instance.
 
     const MockWallet = {
       signTransaction: () => Promise.reject(),
@@ -55,7 +64,7 @@ export function ProgramProvider(props: ProgramProviderProps) {
     );
 
     const [counterProgramAddress] = PublicKey.findProgramAddressSync(
-      [Buffer.from('counter')],
+      [Buffer.from("counter")],
       programId,
     );
 
