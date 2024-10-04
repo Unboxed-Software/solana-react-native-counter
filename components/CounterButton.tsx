@@ -59,7 +59,7 @@
           const authResult = await authorizeSession(wallet);
           const latestBlockhashResult = await connection.getLatestBlockhash();
   
-          const ix = await program.methods
+          const instruction = await program.methods
             .increment()
             .accounts({ counter: counterAddress, user: authResult.publicKey })
             .instruction();
@@ -83,16 +83,16 @@
           const transaction = new Transaction({
             ...latestBlockhashResult,
             feePayer: authResult.publicKey,
-          }).add(ix);
+          }).add(instruction);
           const signature = await wallet.signAndSendTransactions({
             transactions: [transaction],
           });
   
           showToastOrAlert(`Transaction successful! ${signature}`);
         })
-          .catch(e => {
-            console.log(e);
-            showToastOrAlert(`Error: ${JSON.stringify(e)}`);
+          .catch(error => {
+            console.log(error);
+            showToastOrAlert(`Error: ${JSON.stringify(error)}`);
           })
           .finally(() => {
             setIsTransactionInProgress(false);

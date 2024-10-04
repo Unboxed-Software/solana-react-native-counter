@@ -34,8 +34,8 @@ export function CounterView() {
             accountInfo.data,
           );
           setCounter(data);
-        } catch (e) {
-          console.log("account decoding error: " + e);
+        } catch (error) {
+          console.log("account decoding error: " + error);
         }
       },
     );
